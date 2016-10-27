@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Select Iteneraries</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+		.button{text-decoration:none; text-align:center; 
+				 padding:11px 35px; 
+				 border:solid 1px #004F72; 
+				 -webkit-border-radius:37px;
+				 -moz-border-radius:37px; 
+				 border-radius: 37px; 
+				 font:24px Arial, Helvetica, sans-serif; 
+				 font-weight:bold; 
+				 color:#E5FFFF; 
+				 background-color:#728085; 
+				 background-image: -moz-linear-gradient(top, #728085 0%, #2b383d 100%); 
+				 background-image: -webkit-linear-gradient(top, #728085 0%, #2b383d 100%); 
+				 background-image: -o-linear-gradient(top, #728085 0%, #2b383d 100%); 
+				 background-image: -ms-linear-gradient(top, #728085 0% ,#2b383d 100%); 
+				 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b383d', endColorstr='#2b383d',GradientType=0 ); 
+				 background-image: linear-gradient(top, #728085 0% ,#2b383d 100%);   
+				 -webkit-box-shadow:0px 0px 16px #bababa, inset 0px 0px -15px #ffffff; 
+				 -moz-box-shadow: 0px 0px 16px #bababa,  inset 0px 0px -15px #ffffff;  
+				 box-shadow:0px 0px 16px #bababa, inset 0px 0px -15px #ffffff;  
+				  
+				   -webkit-transition: background 0.82s linear;
+				 -moz-transition:  background 0.82s linear;
+				 -o-transition:  background 0.82s linear;
+				 transition:  background 0.82s linear;}.button:hover{
+				 padding:11px 35px; 
+				 border:solid 1px #004F72; 
+				 -webkit-border-radius:37px;
+				 -moz-border-radius:37px; 
+				 border-radius: 37px; 
+				 font:24px Arial, Helvetica, sans-serif; 
+				 font-weight:bold; 
+				 color:#E5FFFF; 
+				 background-color:#000405; 
+				 background-image: -moz-linear-gradient(top, #000405 0%, #05242e 100%); 
+				 background-image: -webkit-linear-gradient(top, #000405 0%, #05242e 100%); 
+				 background-image: -o-linear-gradient(top, #000405 0%, #05242e 100%); 
+				 background-image: -ms-linear-gradient(top, #000405 0% ,#05242e 100%); 
+				 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05242e', endColorstr='#05242e',GradientType=0 ); 
+				 background-image: linear-gradient(top, #000405 0% ,#05242e 100%);   
+				 -webkit-box-shadow:0px 0px 16px #bababa, inset 0px 0px -15px #ffffff; 
+				 -moz-box-shadow: 0px 0px 16px #bababa,  inset 0px 0px -15px #ffffff;  
+				 box-shadow:0px 0px 16px #bababa, inset 0px 0px -15px #ffffff;  
+				  
+				 }.button:active{
+				 padding:11px 35px; 
+				 border:solid 1px #004F72; 
+				 -webkit-border-radius:37px;
+				 -moz-border-radius:37px; 
+				 border-radius: 37px; 
+				 font:24px Arial, Helvetica, sans-serif; 
+				 font-weight:bold; 
+				 color:#E5FFFF; 
+				 background-color:#3ba4c7; 
+				 background-image: -moz-linear-gradient(top, #3ba4c7 0%, #1982a5 100%); 
+				 background-image: -webkit-linear-gradient(top, #3ba4c7 0%, #1982a5 100%); 
+				 background-image: -o-linear-gradient(top, #3ba4c7 0%, #1982a5 100%); 
+				 background-image: -ms-linear-gradient(top, #3ba4c7 0% ,#1982a5 100%); 
+				 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1982a5', endColorstr='#1982a5',GradientType=0 ); 
+				 background-image: linear-gradient(top, #3ba4c7 0% ,#1982a5 100%);   
+				 -webkit-box-shadow:0px 0px 16px #bababa, inset 0px 0px -15px #ffffff; 
+				 -moz-box-shadow: 0px 0px 16px #bababa,  inset 0px 0px -15px #ffffff;  
+				 box-shadow:0px 0px 16px #bababa, inset 0px 0px -15px #ffffff;  
+				  
+		}
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    </style>
+	<script>
+	  var map;
+      function initMap() {
+		
+		map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.0902, lng: -95.7129},
+          zoom: 5
+        });
+		
+		var input = (document.getElementById('pac-input'));
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+		
+		var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+		var infowindow = new google.maps.InfoWindow();
+		
+		autocomplete.addListener('place_changed', function() {
+			
+			var marker = new google.maps.Marker({ map: map, anchorPoint: new google.maps.Point(0, -29) });
+			place = autocomplete.getPlace();
+			map.setCenter(place.geometry.location);
+			map.setZoom(16);
+			marker.setPosition(place.geometry.location);
+			marker.setVisible(true);
+			var address = '';
+			if(place.address_components){
+				if (place.address_components) {
+					address = [
+					(place.address_components[0] && place.address_components[0].short_name || ''),
+					(place.address_components[1] && place.address_components[1].short_name || ''),
+					(place.address_components[2] && place.address_components[2].short_name || '')
+					].join(' ');
+				}
+			}
+			google.maps.event.addListener(marker,'click', function(){
+					if(address != ''){
+						infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+						infowindow.open(map,this);
+					}
+			});
+			
+			var form = document.getElementById("places");
+			var input = document.createElement("input");
+			input.setAttribute('type',"hidden");
+			input.setAttribute('value',place.geometry.location.lat()+';'+place.geometry.location.lng());
+			input.setAttribute('name',address);
+			input.readOnly = true;
+			form.appendChild(input);
+			
+			var bounds = new google.maps.LatLngBounds();
+			var input_elements = document.forms["places"].getElementsByTagName("input");
+			for(i=0;i<input_elements.length;i++){
+				if(input_elements[i].type != "submit"){
+					var res = input_elements[i].value.split(";");
+					bounds.extend(new google.maps.LatLng(res[0], res[1]));
+				}
+			}
+			map.fitBounds(bounds);
+        });
+	  }
+    </script>
+  </head>
+  <body>
+	<input id="pac-input" class="controls" type="text" placeholder="Enter a location" >
+	<section style="width:70%;height:71%;position:fixed">
+		<div id="map"></div>
+		<form id="places" action="#">
+		<input type="submit" class="button" value="Submit" style="height:50px;width:49.7%"/>
+		<input type="submit" class="button" value="Cancel" style="height:50px;width:49.7%"/>
+		</form>
+	</section>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0tDyqcCigxxT12E00VCatJ3Aqglm4PpY&libraries=places&callback=initMap" async defer></script>
+  </body>
+  </html>
