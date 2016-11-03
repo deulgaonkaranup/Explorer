@@ -82,5 +82,26 @@ id++;
 	return id;
 }
 
+public static int userLoginValidation(String username,String pass)
+{
+	ResultSet rs=null;
+	
+	int cnt=0;
+	try{
+Connection conn=getConnection();
+
+ rs = conn.createStatement().executeQuery("select user_id from usr_regist where username=\""+username+"\" and pass=\""+pass+"\"");
+while(rs.next())
+{
+	cnt=rs.getInt("user_id");
+
+}
+
+		}
+		catch (Exception e)
+		{}
+	return cnt;
+}
+
 
 }
