@@ -3,12 +3,12 @@
 
 <%
 
-String fname=request.getParameter("fname");  
-String lname=request.getParameter("lname");  
-String username=request.getParameter("username");  
+String fname=request.getParameter("fname");
+String lname=request.getParameter("lname");
+String username=request.getParameter("username");
 String contact=request.getParameter("contact");
-String email_id=request.getParameter("email_id");  
-String pass=request.getParameter("pass");  
+String email_id=request.getParameter("email_id");
+String pass=request.getParameter("pass");
 String cpass=request.getParameter("cpass");
 String errorMsg="";
 MySQLDataStoreUtilities ms= new MySQLDataStoreUtilities();
@@ -36,12 +36,8 @@ else
 
 }
 session.setAttribute("errorMsg", errorMsg);
-response.sendRedirect(request.getContextPath() + "/explorer_signup_1.jsp");
+response.sendRedirect(request.getContextPath() + "/explorer_signup1.jsp");
 
 
 
 %>
-
-
-
-
