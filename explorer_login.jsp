@@ -12,7 +12,7 @@ String errorMsg="";
 String path="";
 if(ms.userLoginValidation(username,pass)!=0)
 {
-path="/explorer_home.jsp";
+path="/explorer_userHome.jsp";
 session.setAttribute("username", username);
 }
 else

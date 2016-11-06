@@ -17,13 +17,19 @@ License: Creative Commons Attribution
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 </head>
 <body>
+<%@ page import ="explorer.*" %>
+<%MySQLDataStoreUtilities ms= new MySQLDataStoreUtilities();
+int id=ms.userID((String)session.getAttribute("username"));
+User user=ms.userDetails(id);
+
+%>
 <div id="container">
 
        <nav>
 	<div class="width">
     		<ul>
 
-            <li class="start selected" style="padding-right: 700px;"><a href="explorer_home.jsp">Vexplore</a></li>
+            <li class="start selected" style="padding-right: 550px;"><a href="explorer_profile.jsp"><%=user.fname+" "+user.lname%></a></li>
         		<li class="start selected"><a href="explorer_home.jsp">Home</a></li>
         	    	<li class=""><a href="explorer_login1.jsp">Login</a></li>
          	   	<li><a href="explorer_signup1.jsp">Signup</a></li>
@@ -32,12 +38,12 @@ License: Creative Commons Attribution
 
 	</div>
     </nav>
+    <div id="body" class="width">
 
-	<header >
-	<div class="width">
-    		<h1><a href="/">Vexplore</a></h1>
-       	</div>
-    </header>
+
+
+
+
 </div>
 </div>
 </body>
