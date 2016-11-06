@@ -7,7 +7,10 @@ public String lname;
 public String email_id;
 public String contact;
 public int user_id;
-
+public User()
+{
+  
+}
 
 public  User (int user_id,String username,String pass, String fname,String lname,String email_id,String contact)
 {

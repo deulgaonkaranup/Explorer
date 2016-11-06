@@ -85,7 +85,7 @@ id++;
 public static int userLoginValidation(String username,String pass)
 {
 	ResultSet rs=null;
-	
+
 	int cnt=0;
 	try{
 Connection conn=getConnection();
@@ -101,6 +101,46 @@ while(rs.next())
 		catch (Exception e)
 		{}
 	return cnt;
+}
+public static int userID(String username)
+{
+	ResultSet rs=null;
+
+	int cnt=0;
+	try{
+Connection conn=getConnection();
+
+ rs = conn.createStatement().executeQuery("select user_id from usr_regist where username=\""+username+"\"");
+while(rs.next())
+{
+	cnt=rs.getInt("user_id");
+
+}
+
+		}
+		catch (Exception e)
+		{}
+	return cnt;
+}
+public static User userDetails(int userid)
+{
+	ResultSet rs=null;
+
+	User user=new User();
+	try{
+Connection conn=getConnection();
+
+ rs = conn.createStatement().executeQuery("select * from usr_acc where user_id="+userid);
+while(rs.next())
+{
+	user=new User(userid,"","",rs.getString("fname"),rs.getString("lname"),rs.getString("contact"),rs.getString("email_id"));
+
+}
+
+		}
+		catch (Exception e)
+		{}
+	return user;
 }
 
 
