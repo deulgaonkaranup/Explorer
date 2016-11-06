@@ -133,7 +133,7 @@ Connection conn=getConnection();
  rs = conn.createStatement().executeQuery("select * from usr_acc where user_id="+userid);
 while(rs.next())
 {
-	user=new User(userid,"","",rs.getString("fname"),rs.getString("lname"),rs.getString("contact"),rs.getString("email_id"));
+	user=new User(userid,"","",rs.getString("fname"),rs.getString("lname"),rs.getString("email_id"),rs.getString("contact"));
 
 }
 
@@ -142,6 +142,56 @@ while(rs.next())
 		{}
 	return user;
 }
+
+public static ResultSet visitedTrips(int id)
+{
+	ResultSet rs=null;
+
+	try{
+Connection conn=getConnection();
+
+ rs = conn.createStatement().executeQuery("select it.itinerary_desc,it.visited_date from (select distinct it.itinerary_id from( select itinerary_id from usr_itinerary_grp where user_id="+id+" union all select itinerary_id from usr_itinerary where owner_id="+id+") it) main left outer join usr_itinerary it on it.itinerary_id=main.itinerary_id where it.visited_date <=current_timestamp order by it.visited_date");
+
+
+		}
+		catch (Exception e)
+		{}
+	return rs;
+}
+
+public static ResultSet plannedTrips(int id)
+{
+	ResultSet rs=null;
+
+	try{
+Connection conn=getConnection();
+
+ rs = conn.createStatement().executeQuery("select it.itinerary_desc,it.visited_date from (select distinct it.itinerary_id from( select itinerary_id from usr_itinerary_grp where user_id="+id+" union all select itinerary_id from usr_itinerary where owner_id="+id+") it) main left outer join usr_itinerary it on it.itinerary_id=main.itinerary_id where it.visited_date >current_timestamp order by it.visited_date");
+
+
+		}
+		catch (Exception e)
+		{}
+	return rs;
+}
+public static ResultSet friendList(int id)
+{
+	ResultSet rs=null;
+
+	try{
+Connection conn=getConnection();
+
+ rs = conn.createStatement().executeQuery("select idt.id,uc.fname,uc.lname from ((select main.id from ((select user_id_sender id from ur_notifications where notif_type='FRND_RQST' and status='ACCEPTED' and (user_id_sender="+id+" or user_id_reciever="+id+"))union(select user_id_reciever id from ur_notifications where notif_type='FRND_RQST' and status='ACCEPTED' and (user_id_sender="+id+" or user_id_reciever="+id+"))) main where main.id !="+id+") idt left outer join usr_acc uc on uc.user_id=idt.id)");
+
+
+
+		}
+		catch (Exception e)
+		{}
+	return rs;
+}
+
+
 
 
 }
