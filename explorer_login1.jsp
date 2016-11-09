@@ -37,7 +37,9 @@
                 <%}
             }
         catch(Exception e)
-      {}%>
+      {}
+      session.setAttribute("errorMsg", "");
+      %>
     
       <input type="text" id="username" name="username" required="required" placeholder="username"/>
       <input type="password" id="pass" name="pass" required="required" placeholder="password"/>

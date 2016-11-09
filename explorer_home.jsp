@@ -10,10 +10,10 @@
 <body>
 <div id="container">
 
-       <nav>
+<nav>
 	<div class="width">
     		<ul>
-            <li class="start selected" style="padding-right: 700px;"><a href="explorer_home.jsp">Vexplore</a></li>
+            <li class="start selected" style="margin-left: -300px;padding-left: -600px; float: left;"><a href="explorer_home.jsp">Vexplore</a></li>
       
         		<li class="start selected"><a href="explorer_home.jsp">Home</a></li>
         	    	<li class=""><a href="explorer_login1.jsp">Login</a></li>
@@ -23,10 +23,10 @@
 	</div>
     </nav>
 
-	<header >
-	<div class="width">
-    		<h1><a href="/">Vexplore</a></h1>
-       	</div>
+	<header style= "max-width: 100%;">
+	<!-- <div class="width"> -->
+    		<h1 style= "padding-top:400px; padding-left: 800px;"><a href="/">Vexplore</a></h1>
+       	<!-- </div> -->
     </header>
 </div>
 </div>
